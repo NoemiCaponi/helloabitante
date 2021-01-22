@@ -28,31 +28,47 @@ public class AbitanteDAOImpl implements AbitanteDAO {
 
 	@Override
 	public List<Abitante> list() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return DB_Mock.LISTA_ABITANTI;
+		
 	}
 
 	@Override
 	public Abitante get(Long id) throws Exception {
-		// TODO Auto-generated method stub
+		
+		for(Abitante abitanteItem:DB_Mock.LISTA_ABITANTI) {
+			if(abitanteItem.getIdAbitante()==id) 
+				return abitanteItem;
+		}
 		return null;
+		
 	}
 
 	@Override
 	public int update(Abitante input) throws Exception {
-		// TODO Auto-generated method stub
+		if(DB_Mock.LISTA_ABITANTI.contains(input)) {
+			for(Abitante abitanteItem:DB_Mock.LISTA_ABITANTI) {
+				if(abitanteItem.getIdAbitante().equals(input.getIdAbitante())){
+					abitanteItem=input;
+					return 1;
+				}
+			}
+		}
 		return 0;
 	}
 
 	@Override
 	public int insert(Abitante input) throws Exception {
-		// TODO Auto-generated method stub
+		if( DB_Mock.LISTA_ABITANTI.add(input))
+			return 1;
 		return 0;
 	}
 
 	@Override
 	public int delete(Abitante input) throws Exception {
-		// TODO Auto-generated method stub
+		if(DB_Mock.LISTA_ABITANTI.contains(input)) {
+			DB_Mock.LISTA_ABITANTI.remove(input);
+			return 1;
+		}
 		return 0;
 	}
 

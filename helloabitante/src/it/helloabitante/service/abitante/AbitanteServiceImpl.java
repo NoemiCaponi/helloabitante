@@ -19,4 +19,38 @@ public class AbitanteServiceImpl implements AbitanteService {
 		return abitanteDAO.findByNomeAndCognome(nome, cognome);
 	}
 
+	@Override
+	public List<Abitante> getList() throws Exception {
+		
+		return abitanteDAO.list();
+	}
+
+	@Override
+	public Abitante getId(Long id) throws Exception {
+		if(id==null)
+			throw new Exception("input non ammesso");
+		return abitanteDAO.get(id);
+	}
+
+	@Override
+	public int updateAbitante(Abitante input) throws Exception {
+		if (input == null || input.getIdAbitante() == null || input.getIdAbitante() <1)
+			throw new Exception("input non ammesso");
+		return abitanteDAO.update(input);
+	}
+
+	@Override
+	public int insertAbitante(Abitante input) throws Exception {
+		if(input==null)
+			throw new Exception("input non ammesso");
+		return abitanteDAO.insert(input);
+	}
+
+	@Override
+	public int deleteAbitante(Abitante input) throws Exception {
+		if (input == null || input.getIdAbitante() == null || input.getIdAbitante() <1)
+			throw new Exception("input non ammesso");
+		return abitanteDAO.delete(input);
+	}
+
 }
