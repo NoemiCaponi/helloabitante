@@ -40,7 +40,8 @@
 					<td><%=abitanteItem.getCognome() %></td>
 					<td>
 						<a href="VisualizzaDettaglioServlet?idDaInviareComeParametro=<%=abitanteItem.getIdAbitante() %>">Dettaglio</a>
-						<a href="PreparaModificaServlet?idDaInviareComeParametro=<%=abitanteItem.getIdAbitante() %>">Modifica</a>
+						<a href="ModificaServlet?idDaInviareComeParametro=<%=abitanteItem.getIdAbitante() %>">Modifica</a>
+						<a href="PreparaRimozioneServlet?idDaInviareComeParametro=<%=abitanteItem.getIdAbitante() %>">Rimozione</a>
 					</td>
 				</tr>
 		<%	}%>
