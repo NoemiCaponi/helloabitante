@@ -13,35 +13,40 @@ import it.helloabitante.model.Abitante;
 import it.helloabitante.service.MyServiceFactory;
 
 
-@WebServlet("/PreparazioneModifica")
-public class PreparazioneModifica extends HttpServlet {
+@WebServlet("/EliminaServlet")
+public class EliminaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-
-    public PreparazioneModifica() {
+    
+    public EliminaServlet() {
         super();
-       
+        // TODO Auto-generated constructor stub
     }
 
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Long idAbitanteDaModificare= Long.parseLong(request.getParameter("idDaInviareComeParametro"));
-		String destinazione=null;
-		
-		try {
-			request.setAttribute("abitanteAttributeModifica", MyServiceFactory.getAbitanteServiceInstance().getId(idAbitanteDaModificare));
-		} catch (Exception e) {
-			
-			e.printStackTrace();
-		}
-		destinazione="inserisciModifica.jsp";
-		
-		RequestDispatcher rd=request.getRequestDispatcher(destinazione);
-		rd.forward(request, response);
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String idAbitanteDaEliminare=request.getParameter("abitanteId");
+		Long idAbitanteConvertito=Long.parseLong(idAbitanteDaEliminare);
+		String destinazione=null;
 		
 		
+		try {
+			Abitante abitanteDaEliminare=MyServiceFactory.getAbitanteServiceInstance().getId(idAbitanteConvertito);
+			MyServiceFactory.getAbitanteServiceInstance().deleteAbitante(abitanteDaEliminare);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		destinazione="searchForm.jsp";
+		RequestDispatcher rd=request.getRequestDispatcher(destinazione);
+		rd.forward(request, response);
 		
 	}
 

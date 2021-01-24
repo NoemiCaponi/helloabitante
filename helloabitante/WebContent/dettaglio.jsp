@@ -36,9 +36,9 @@
 		Abitante abitantePassatoDaServlet = (Abitante) request.getAttribute("abitanteDettaglioAttributeName");
 	%>
 	<tr>
-	  	<td><%=abitantePassatoDaServlet.getIdAbitante()%></td>
+	  	 <td><%=abitantePassatoDaServlet.getIdAbitante()%></td>
 	  	<td><%=abitantePassatoDaServlet.getNome() %></td>
-	  	<td><%=abitantePassatoDaServlet.getCognome() %><td>
+	  	<td><%=abitantePassatoDaServlet.getCognome() %></td>
 	  	<td><%=abitantePassatoDaServlet.getCodiceFiscale() %></td>
 	  	<td><%=abitantePassatoDaServlet.getEta() %></td>
 	  	<td><%=abitantePassatoDaServlet.getMottoDiVita() %></td>

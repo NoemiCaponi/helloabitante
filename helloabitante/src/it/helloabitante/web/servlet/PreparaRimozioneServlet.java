@@ -9,40 +9,42 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import it.helloabitante.model.Abitante;
 import it.helloabitante.service.MyServiceFactory;
 
 
-@WebServlet("/PreparazioneModifica")
-public class PreparazioneModifica extends HttpServlet {
+@WebServlet("/PreparaRimozioneServlet")
+public class PreparaRimozioneServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-
-    public PreparazioneModifica() {
+    
+    public PreparaRimozioneServlet() {
         super();
        
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Long idAbitanteDaModificare= Long.parseLong(request.getParameter("idDaInviareComeParametro"));
+	
 		String destinazione=null;
 		
+		Long idAbitanteDaEliminare= Long.parseLong(request.getParameter("idDaInviareComeParametro"));
+		
+		
 		try {
-			request.setAttribute("abitanteAttributeModifica", MyServiceFactory.getAbitanteServiceInstance().getId(idAbitanteDaModificare));
+			request.setAttribute("abitanteAttributeElimina", MyServiceFactory.getAbitanteServiceInstance().getId(idAbitanteDaEliminare));
 		} catch (Exception e) {
 			
 			e.printStackTrace();
 		}
-		destinazione="inserisciModifica.jsp";
+		destinazione="confermaElimina.jsp";
 		
 		RequestDispatcher rd=request.getRequestDispatcher(destinazione);
 		rd.forward(request, response);
 	}
+		
+	
 
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
-		
-	}
 
+	}
 }

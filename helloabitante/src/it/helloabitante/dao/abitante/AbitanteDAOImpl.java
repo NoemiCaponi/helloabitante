@@ -45,22 +45,25 @@ public class AbitanteDAOImpl implements AbitanteDAO {
 
 	@Override
 	public int update(Abitante input) throws Exception {
-		if(DB_Mock.LISTA_ABITANTI.contains(input)) {
+		
 			for(Abitante abitanteItem:DB_Mock.LISTA_ABITANTI) {
 				if(abitanteItem.getIdAbitante().equals(input.getIdAbitante())){
+					input.setIdAbitante(abitanteItem.getIdAbitante());
 					abitanteItem=input;
 					return 1;
 				}
 			}
-		}
+		
 		return 0;
 	}
 
 	@Override
 	public int insert(Abitante input) throws Exception {
-		if( DB_Mock.LISTA_ABITANTI.add(input))
+		 	
+			input.setIdAbitante((long) DB_Mock.LISTA_ABITANTI.size());
+			DB_Mock.LISTA_ABITANTI.add(input);
 			return 1;
-		return 0;
+		
 	}
 
 	@Override
